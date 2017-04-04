@@ -3,77 +3,134 @@ package domein;
 import java.util.Date;
 
 public class Persoon {
-	private String naam;
 	private String email;
-	private String wachtwoord;
+	private String naam;
+	private String tussenvoegsel;
+	private String achternaam;
+	private byte [] password;
 	private Date geboortedatum;
-	private String adres;
+	private int telefoonnummer;
+	private String straatnaam;
+	private int huisnummer;
+	private String toevoeging;
+	private String postcode;
+	private String plaats;
+	private int bsnnummer;
+	private String geslacht;
+	private String chef;
+	private String functie;
+	private int kvknummer;
+	private byte [] salt;
 	
-	public Persoon(String nm,String em,String ww,Date gb,String ad){
-		naam = nm;
-		email = em;
-		wachtwoord = ww;
-		geboortedatum = gb;
-		adres = ad;
+	public Persoon() {
 	}
-	/**
-	 * @return the naam
-	 */
-	public String getNaam() {
-		return naam;
-	}
-	/**
-	 * @param naam the naam to set
-	 */
-	public void setNaam(String naam) {
-		this.naam = naam;
-	}
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
 		return email;
 	}
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	/**
-	 * @return the wachtwoord
-	 */
-	public String getWachtwoord() {
-		return wachtwoord;
+	public byte [] getPassword() {
+		return password;
 	}
-	/**
-	 * @param wachtwoord the wachtwoord to set
-	 */
-	public void setWachtwoord(String wachtwoord) {
-		this.wachtwoord = wachtwoord;
+	public void setPassword(byte [] password) {
+		this.password = password;
 	}
-	/**
-	 * @return the geboortedatum
-	 */
+	public byte[] getSalt() {
+		return salt;
+	}
+	public void setSalt(byte[] salt) {
+		this.salt = salt;
+	}
+	public String getNaam() {
+		return naam;
+	}
+	public void setNaam(String naam) {
+		this.naam = naam;
+	}
+	public String getTussenvoegsel() {
+		return tussenvoegsel;
+	}
+	public void setTussenvoegsel(String tussenvoegsel) {
+		this.tussenvoegsel = tussenvoegsel;
+	}
+	public String getAchternaam() {
+		return achternaam;
+	}
+	public void setAchternaam(String achternaam) {
+		this.achternaam = achternaam;
+	}
 	public Date getGeboortedatum() {
 		return geboortedatum;
 	}
-	/**
-	 * @param geboortedatum the geboortedatum to set
-	 */
 	public void setGeboortedatum(Date geboortedatum) {
 		this.geboortedatum = geboortedatum;
 	}
-	/**
-	 * @return the adres
-	 */
-	public String getAdres() {
-		return adres;
+	public int getTelefoonnummer() {
+		return telefoonnummer;
 	}
-	/**
-	 * @param adres the adres to set
-	 */
-	public void setAdres(String adres) {
-		this.adres = adres;
+	public void setTelefoonnummer(int telefoonnummer) {
+		this.telefoonnummer = telefoonnummer;
 	}
+	public String getStraatnaam() {
+		return straatnaam;
+	}
+	public void setStraatnaam(String straatnaam) {
+		this.straatnaam = straatnaam;
+	}
+	public int getHuisnummer() {
+		return huisnummer;
+	}
+	public void setHuisnummer(int huisnummer) {
+		this.huisnummer = huisnummer;
+	}
+	public String getToevoeging() {
+		return toevoeging;
+	}
+	public void setToevoeging(String toevoeging) {
+		this.toevoeging = toevoeging;
+	}
+	public String getPostcode() {
+		return postcode;
+	}
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+	public String getPlaats() {
+		return plaats;
+	}
+	public void setPlaats(String plaats) {
+		this.plaats = plaats;
+	}
+	public int getBsnnummer() {
+		return bsnnummer;
+	}
+	public void setBsnnummer(int bsnnummer) {
+		this.bsnnummer = bsnnummer;
+	}
+	public String getGeslacht() {
+		return geslacht;
+	}
+	public void setGeslacht(String geslacht) {
+		this.geslacht = geslacht;
+	}
+	public String getChef() {
+		return chef;
+	}
+	public void setChef(String chef) {
+		this.chef = chef;
+	}
+	public String getFunctie() {
+		return functie;
+	}
+	public void setFunctie(String functie) {
+		this.functie = functie;
+	}
+	public int getKvknummer() {
+		return kvknummer;
+	}
+	public void setKvknummer(int kvknummer) {
+		this.kvknummer = kvknummer;
+	}
+
 }

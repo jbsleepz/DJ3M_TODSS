@@ -15,7 +15,7 @@ public class Main {
 		//encryptie van het wachtwoord
 		byte [] encryptedpassword = handler.getEncryptedPassword(password, salt);
 		Account test = new Account();
-		test.setUsername("username");
+		test.setEmail("username");
 		test.setPassword(encryptedpassword);
 		test.setSalt(salt);
 		//vergelijk het meegegeven wachtwoord, met het ge-encrypte wachtwoord EN salt uit de database(in de toekomst)
