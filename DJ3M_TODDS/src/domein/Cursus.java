@@ -1,5 +1,6 @@
 package domein;
 
+import java.util.Date;
 import java.util.List;
 
 public class Cursus {
@@ -8,6 +9,7 @@ public class Cursus {
 	private int AantalPlaatsen;
 	private double CursusPrijs;
 	private List<Training> training;
+	private CursusUitvoering uitvoering;
 	
 	public Cursus(String cc,String om,int ap,double cp){
 		CursusCode = cc;
@@ -17,6 +19,20 @@ public class Cursus {
 	public void VoegTrainingToeAanCursus(Training T){
 		training.add(T);
 		//maak uniek
+	}
+	public void planCursusIn(Date beginPunt,Date eindPunt){
+		if(eindPunt.after(beginPunt)){
+		uitvoering.setBeginPunt(beginPunt);
+		uitvoering.setEindPunt(eindPunt);
+		}
+		uitvoering.setStatus("ingepland");
+	}
+	public void wijzigStatusCursus(Date beginPunt,Date eindPunt,String status){
+		if(eindPunt.after(beginPunt)){
+			uitvoering.setBeginPunt(beginPunt);
+			uitvoering.setEindPunt(eindPunt);
+			uitvoering.setStatus(status);
+		}
 	}
 	/**
 	 * @return the cursusCode
