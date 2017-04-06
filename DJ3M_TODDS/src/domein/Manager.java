@@ -1,16 +1,27 @@
 package domein;
 
-import java.util.Date;
-
 public class Manager extends Persoon {
-
-	public Manager(String nm, String em, String ww, Date gb, String ad) {
-		super(nm, em, ww, gb, ad);
-		// TODO Auto-generated constructor stub
-	}
-	public void voegCursistToe(Cursist cursus){
-		
-	}
+	private String chef;
+	private int bedrijfsID;
 	
-
+	public Manager() {
+	}
+	public String getFunctie() {
+		return "Manager";
+	}
+	public void setFunctie(String functie) {
+		functie = "Manager";
+	}
+	public String getChef() {
+		return chef;
+	}
+	public void setChef(String chef) {
+		this.chef = chef;
+	}
+	public int getBedrijfsID() {
+		return bedrijfsID;
+	}
+	public void setBedrijfsID(int bedrijfsID) {
+		this.bedrijfsID = bedrijfsID;
+	}
 }

@@ -1,57 +1,48 @@
 package domein;
 
 import java.util.Date;
-import java.util.List;
 
-public class CursusUitvoering {
-	private Date beginPunt;
-	private Date eindPunt;
-	private String status;
-	
-	public CursusUitvoering(Date bp,Date ep, String st){
-		setBeginPunt(bp);
-		setEindPunt(ep);
-		setStatus(st);
+public class CursusUitvoering extends Cursus{
+	private String uitvoeringID;
+	private Date beginDatum;
+	private Date eindDatum;
+	private int aantalPlaatsen;
+	private Cursus cursus;
+	private Docent cursist;
+	public String getUitvoeringID() {
+		return uitvoeringID;
 	}
-	/**
-	 * @return the beginPunt
-	 */
-	public Date getBeginPunt() {
-		return beginPunt;
+	public void setUitvoeringID(String uitvoeringID) {
+		this.uitvoeringID = uitvoeringID;
 	}
-
-	/**
-	 * @param beginPunt the beginPunt to set
-	 */
-	public void setBeginPunt(Date beginPunt) {
-		this.beginPunt = beginPunt;
+	public Date getBeginDatum() {
+		return beginDatum;
 	}
-
-	/**
-	 * @return the eindPunt
-	 */
-	public Date getEindPunt() {
-		return eindPunt;
+	public void setBeginDatum(Date beginDatum) {
+		this.beginDatum = beginDatum;
 	}
-
-	/**
-	 * @param eindPunt the eindPunt to set
-	 */
-	public void setEindPunt(Date eindPunt) {
-		this.eindPunt = eindPunt;
+	public Date getEindDatum() {
+		return eindDatum;
 	}
-
-	/**
-	 * @return the status
-	 */
-	public String getStatus() {
-		return status;
+	public void setEindDatum(Date eindDatum) {
+		this.eindDatum = eindDatum;
 	}
-
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(String status) {
-		this.status = status;
+	public int getAantalPlaatsen() {
+		return aantalPlaatsen;
+	}
+	public void setAantalPlaatsen(int aantalPlaatsen) {
+		this.aantalPlaatsen = aantalPlaatsen;
+	}
+	public Cursus getCursus() {
+		return cursus;
+	}
+	public void setCursus(Cursus cursus) {
+		this.cursus = cursus;
+	}
+	public Docent getCursist() {
+		return cursist;
+	}
+	public void setCursist(Docent cursist) {
+		this.cursist = cursist;
 	}
 }

@@ -3,6 +3,7 @@ package domein;
 import java.util.Date;
 
 public class Persoon {
+	private String personID;
 	private String email;
 	private String naam;
 	private String tussenvoegsel;
@@ -17,9 +18,6 @@ public class Persoon {
 	private String plaats;
 	private int bsnnummer;
 	private String geslacht;
-	private String chef;
-	private String functie;
-	private int kvknummer;
 	private byte [] salt;
 	
 	public Persoon() {
@@ -114,23 +112,11 @@ public class Persoon {
 	public void setGeslacht(String geslacht) {
 		this.geslacht = geslacht;
 	}
-	public String getChef() {
-		return chef;
+	public String getPersonID() {
+		return personID;
 	}
-	public void setChef(String chef) {
-		this.chef = chef;
-	}
-	public String getFunctie() {
-		return functie;
-	}
-	public void setFunctie(String functie) {
-		this.functie = functie;
-	}
-	public int getKvknummer() {
-		return kvknummer;
-	}
-	public void setKvknummer(int kvknummer) {
-		this.kvknummer = kvknummer;
+	public void setPersonID(String personID) {
+		this.personID = personID;
 	}
 
 }
