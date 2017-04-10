@@ -1,44 +1,133 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cursist extends Persoon {
 	private String chef;
 	private int bedrijfsID;
-	private List<CursusUitvoering> volgtCursussen;
-	
+	private List<CursusUitvoering> volgtCursusUitvoeringen = new ArrayList<CursusUitvoering>();
+	private List<AntwoordCursist> antwoorden = new ArrayList<AntwoordCursist>();
+	private List<ResultaatCursist> resultaten = new ArrayList<ResultaatCursist>();
+
 	public Cursist() {
 	}
+
 	public String getFunctie() {
 		return "Cursist";
 	}
+
 	public void setFunctie(String functie) {
 		functie = "Cursist";
 	}
+
 	public String getChef() {
 		return chef;
 	}
+
 	public void setChef(String chef) {
 		this.chef = chef;
 	}
+
 	public int getBedrijfsID() {
 		return bedrijfsID;
 	}
+
 	public void setBedrijfsID(int bedrijfsID) {
 		this.bedrijfsID = bedrijfsID;
 	}
-	public List<CursusUitvoering> getVolgtCursussen() {
-		return volgtCursussen;
+
+	public List<CursusUitvoering> getVolgtCursusUitvoeringen() {
+		return volgtCursusUitvoeringen;
 	}
-	public void addCursusToCursist(CursusUitvoering cursus) {
-		volgtCursussen.add(cursus);
+
+	public void addCursusUitvoeringToCursist(CursusUitvoering cursusuitvoering) {
+		volgtCursusUitvoeringen.add(cursusuitvoering);
 	}
-	public void removeCursusFromCursist(String uitvoeringID) {
-		for(CursusUitvoering cursus : volgtCursussen){
-			if (uitvoeringID == cursus.getUitvoeringID()){
-				volgtCursussen.remove(uitvoeringID);
+
+	public void removeCursusUitvoeringFromCursist(String uitvoeringID) {
+		for (CursusUitvoering cursusuitvoering : volgtCursusUitvoeringen) {
+			if (uitvoeringID == cursusuitvoering.getUitvoeringID()) {
+				volgtCursusUitvoeringen.remove(uitvoeringID);
 			}
-			
+
+		}
+	}
+
+	public CursusUitvoering zoekCursusUitvoering(String uitvoeringID) {
+		CursusUitvoering resp = null;
+		for (CursusUitvoering cursusuitvoering : volgtCursusUitvoeringen) {
+			if (uitvoeringID == cursusuitvoering.getUitvoeringID()) {
+				resp = cursusuitvoering;
+			}
+		}
+		return resp;
+	}
+
+	public List<AntwoordCursist> getAlleAntwoorden() {
+		return antwoorden;
+
+	}
+
+	public List<AntwoordCursist> getAntwoordenVanOpdracht(String opdrachtID) {
+		List<AntwoordCursist> antwoordenOpdracht = new ArrayList<AntwoordCursist>();
+		for (AntwoordCursist antwoord : antwoorden) {
+			if (opdrachtID == antwoord.getOpdracht().getOpdrachtID()) {
+				antwoordenOpdracht.add(antwoord);
+			}
+		}
+		return antwoordenOpdracht;
+
+	}
+
+	public void addAntwoordToCursist(AntwoordCursist antwoord) {
+		antwoorden.add(antwoord);
+	}
+
+	public void removeAntwoordFromCursist(String antwoordcursistID) {
+		for (AntwoordCursist antwoord : antwoorden) {
+			if (antwoordcursistID == antwoord.getAntwoordCursistID()) {
+				antwoorden.remove(antwoordcursistID);
+			}
+
+		}
+	}
+
+	public AntwoordCursist zoekAntwoordCursist(String antwoordcursistID) {
+		AntwoordCursist resp = null;
+		for (AntwoordCursist antwoord : antwoorden) {
+			if (antwoordcursistID == antwoord.getAntwoordCursistID()) {
+				resp = antwoord;
+			}
+		}
+		return resp;
+	}
+
+	public List<ResultaatCursist> getAlleResultaten() {
+		return resultaten;
+
+	}
+
+	public List<ResultaatCursist> getResultatenVanOpdracht(String opdrachtID) {
+		List<ResultaatCursist> resultatenOpdracht = new ArrayList<ResultaatCursist>();
+		for (ResultaatCursist resultaat : resultaten) {
+			if (opdrachtID == resultaat.getAntwoordcursist().getOpdracht().getOpdrachtID()) {
+				resultatenOpdracht.add(resultaat);
+			}
+		}
+		return resultatenOpdracht;
+	}
+
+	public void addResultaatToCursist(ResultaatCursist resultaat) {
+		resultaten.add(resultaat);
+	}
+
+	public void removeResultaatFromCursist(String resultaatID) {
+		for (ResultaatCursist resultaat : resultaten) {
+			if (resultaatID == resultaat.getResultaatID()) {
+				resultaten.remove(resultaatID);
+			}
+
 		}
 	}
 }

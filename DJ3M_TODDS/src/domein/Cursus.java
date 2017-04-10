@@ -1,16 +1,17 @@
 package domein;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cursus {
 	private String CursusID;
 	private String Omschrijving;
 	private double CursusPrijs;
-	private List<Training> trainingen;
+	private List<Training> trainingen = new ArrayList<Training>();
+	private List<CursusUitvoering> uitvoeringen = new ArrayList<CursusUitvoering>();
+
 
 	public Cursus() {
-		super();
 	}
 
 	public String getCursusID() {
@@ -50,7 +51,38 @@ public class Cursus {
 			if (trainingID == training.getTrainingID()) {
 				trainingen.remove(trainingID);
 			}
-
 		}
+	}
+	public Training zoekTraining(String trainingID){
+		Training resp = null;
+		for (Training training : trainingen) {
+			if (trainingID == training.getTrainingID()) {
+				resp = training;
+			}
+		}
+		return resp;
+	}
+	public List<CursusUitvoering> getVolgtCursusUitvoeringen() {
+		return uitvoeringen;
+	}
+	public void addCursusUitvoeringToCursist(CursusUitvoering cursusuitvoering) {
+		uitvoeringen.add(cursusuitvoering);
+	}
+	public void removeCursusUitvoeringFromCursist(String uitvoeringID) {
+		for(CursusUitvoering cursusuitvoering : uitvoeringen){
+			if (uitvoeringID == cursusuitvoering.getUitvoeringID()){
+				uitvoeringen.remove(uitvoeringID);
+			}
+			
+		}
+	}
+	public CursusUitvoering zoekCursusUitvoering(String uitvoeringID){
+		CursusUitvoering resp = null;
+		for (CursusUitvoering cursusuitvoering : uitvoeringen) {
+			if (uitvoeringID == cursusuitvoering.getUitvoeringID()) {
+				resp = cursusuitvoering;
+			}
+		}
+		return resp;
 	}
 }

@@ -1,5 +1,6 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class Training {
 	private String naam;
 	private Date beginDatum;
 	private Date eindDatum;;
-	private List<Opdrachten> opdrachten;
+	private List<Opdracht> opdrachten = new ArrayList<Opdracht>();
 	private Docent docent;
 	
 	public Training(){
@@ -46,12 +47,28 @@ public class Training {
 		this.eindDatum = eindDatum;
 	}
 
-	public List<Opdrachten> getOpdrachten() {
+	public List<Opdracht> getOpdrachten() {
 		return opdrachten;
 	}
 
-	public void setOpdrachten(List<Opdrachten> opdrachten) {
-		this.opdrachten = opdrachten;
+	public void addOpdrachtToTraining(Opdracht opdracht) {
+		opdrachten.add(opdracht);
+	}
+	public void removeOpdrachtFromTraining(String opdrachtID) {
+		for(Opdracht opdracht : opdrachten){
+			if (opdrachtID == opdracht.getOpdrachtID()){
+				opdrachten.remove(opdrachtID);
+			}
+		}
+	}
+	public Opdracht zoekOpdracht(String opdrachtID){
+		Opdracht resp = null;
+		for (Opdracht opdracht : opdrachten) {
+			if (opdrachtID == opdracht.getOpdrachtID()) {
+				resp = opdracht;
+			}
+		}
+		return resp;
 	}
 
 	public Docent getDocent() {
@@ -61,8 +78,4 @@ public class Training {
 	public void setDocent(Docent docent) {
 		this.docent = docent;
 	}
-	
-	
-	
-	//// MOET HIER NOG VERDER AAN WERKEN!!!
 }

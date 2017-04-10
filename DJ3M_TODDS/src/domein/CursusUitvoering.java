@@ -1,6 +1,8 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CursusUitvoering extends Cursus{
 	private String uitvoeringID;
@@ -8,7 +10,11 @@ public class CursusUitvoering extends Cursus{
 	private Date eindDatum;
 	private int aantalPlaatsen;
 	private Cursus cursus;
-	private Docent cursist;
+	private Docent docent;
+	private List<Cursist> cursisten = new ArrayList<Cursist>();
+	public CursusUitvoering(){
+		
+	}
 	public String getUitvoeringID() {
 		return uitvoeringID;
 	}
@@ -40,9 +46,31 @@ public class CursusUitvoering extends Cursus{
 		this.cursus = cursus;
 	}
 	public Docent getCursist() {
-		return cursist;
+		return docent;
 	}
-	public void setCursist(Docent cursist) {
-		this.cursist = cursist;
+	public void setCursist(Docent docent) {
+		this.docent = docent;
+	}
+	public List<Cursist> getCursisten(){
+		return cursisten;
+	}
+	public void voegCursistToe(Cursist cursist){
+		cursisten.add(cursist);
+	}
+	public void removeCursisten(String persoonID) {
+		for (Cursist cursist : cursisten) {
+			if (persoonID == cursist.getPersonID()) {
+				cursisten.remove(persoonID);
+			}
+		}
+	}
+	public Cursist zoekCursist(String persoonID){
+		Cursist resp = null;
+		for (Cursist cursist : cursisten) {
+			if (persoonID == cursist.getPersonID()) {
+				resp = cursist;
+			}
+		}
+		return resp;
 	}
 }
