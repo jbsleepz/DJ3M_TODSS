@@ -1,27 +1,42 @@
 package domein;
 
+import javax.persistence.*;
+@Entity
+@Table(name = "Persoon")
+@DiscriminatorValue("Manager")
 public class Manager extends Persoon {
-	private String chef;
-	private int bedrijfsID;
-	
+	private Manager chef;
+	private Bedrijf bedrijfID;
+
 	public Manager() {
 	}
+	@Column(name = "Functie")
+
 	public String getFunctie() {
 		return "Manager";
 	}
+
 	public void setFunctie(String functie) {
 		functie = "Manager";
 	}
-	public String getChef() {
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Chef")
+
+	public Manager getChef() {
 		return chef;
 	}
-	public void setChef(String chef) {
+
+	public void setChef(Manager chef) {
 		this.chef = chef;
 	}
-	public int getBedrijfsID() {
-		return bedrijfsID;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "BedrijfID")
+
+	public Bedrijf getBedrijfID() {
+		return this.bedrijfID;
 	}
-	public void setBedrijfsID(int bedrijfsID) {
-		this.bedrijfsID = bedrijfsID;
+
+	public void setBedrijfID(Bedrijf bedrijfID) {
+		this.bedrijfID = bedrijfID;
 	}
 }

@@ -1,17 +1,21 @@
 package domein;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "persoon")
+@DiscriminatorValue("Cursist")
 public class Cursist extends Persoon {
-	private String chef;
-	private int bedrijfsID;
-	private List<CursusUitvoering> volgtCursusUitvoeringen = new ArrayList<CursusUitvoering>();
-	private List<AntwoordCursist> antwoorden = new ArrayList<AntwoordCursist>();
-	private List<ResultaatCursist> resultaten = new ArrayList<ResultaatCursist>();
+	private Manager chef;
+	private Bedrijf bedrijfID;
+	private Set<CursusUitvoering> uitvoeringen = new HashSet<CursusUitvoering>();
 
 	public Cursist() {
 	}
+	@Column(name = "Functie")
 
 	public String getFunctie() {
 		return "Cursist";
@@ -20,114 +24,33 @@ public class Cursist extends Persoon {
 	public void setFunctie(String functie) {
 		functie = "Cursist";
 	}
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Chef")
 
-	public String getChef() {
+	public Manager getChef() {
 		return chef;
 	}
 
-	public void setChef(String chef) {
+	public void setChef(Manager chef) {
 		this.chef = chef;
 	}
+	@JoinColumn(name = "BedrijfID")
+	@ManyToOne(cascade = CascadeType.ALL)
 
-	public int getBedrijfsID() {
-		return bedrijfsID;
+	public Bedrijf getBedrijfID() {
+		return this.bedrijfID;
 	}
 
-	public void setBedrijfsID(int bedrijfsID) {
-		this.bedrijfsID = bedrijfsID;
+	public void setBedrijfID(Bedrijf bedrijfID) {
+		this.bedrijfID = bedrijfID;
+	}
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "cursisten")
+	public Set<CursusUitvoering> getUitvoeringen() {
+		return this.uitvoeringen;
 	}
 
-	public List<CursusUitvoering> getVolgtCursusUitvoeringen() {
-		return volgtCursusUitvoeringen;
+	public void setUitvoeringen(Set<CursusUitvoering> uitvoeringen) {
+		this.uitvoeringen = uitvoeringen;
 	}
 
-	public void addCursusUitvoeringToCursist(CursusUitvoering cursusuitvoering) {
-		volgtCursusUitvoeringen.add(cursusuitvoering);
-	}
-
-	public void removeCursusUitvoeringFromCursist(String uitvoeringID) {
-		for (CursusUitvoering cursusuitvoering : volgtCursusUitvoeringen) {
-			if (uitvoeringID == cursusuitvoering.getUitvoeringID()) {
-				volgtCursusUitvoeringen.remove(uitvoeringID);
-			}
-
-		}
-	}
-
-	public CursusUitvoering zoekCursusUitvoering(String uitvoeringID) {
-		CursusUitvoering resp = null;
-		for (CursusUitvoering cursusuitvoering : volgtCursusUitvoeringen) {
-			if (uitvoeringID == cursusuitvoering.getUitvoeringID()) {
-				resp = cursusuitvoering;
-			}
-		}
-		return resp;
-	}
-
-	public List<AntwoordCursist> getAlleAntwoorden() {
-		return antwoorden;
-
-	}
-
-	public List<AntwoordCursist> getAntwoordenVanOpdracht(String opdrachtID) {
-		List<AntwoordCursist> antwoordenOpdracht = new ArrayList<AntwoordCursist>();
-		for (AntwoordCursist antwoord : antwoorden) {
-			if (opdrachtID == antwoord.getOpdracht().getOpdrachtID()) {
-				antwoordenOpdracht.add(antwoord);
-			}
-		}
-		return antwoordenOpdracht;
-
-	}
-
-	public void addAntwoordToCursist(AntwoordCursist antwoord) {
-		antwoorden.add(antwoord);
-	}
-
-	public void removeAntwoordFromCursist(String antwoordcursistID) {
-		for (AntwoordCursist antwoord : antwoorden) {
-			if (antwoordcursistID == antwoord.getAntwoordCursistID()) {
-				antwoorden.remove(antwoordcursistID);
-			}
-
-		}
-	}
-
-	public AntwoordCursist zoekAntwoordCursist(String antwoordcursistID) {
-		AntwoordCursist resp = null;
-		for (AntwoordCursist antwoord : antwoorden) {
-			if (antwoordcursistID == antwoord.getAntwoordCursistID()) {
-				resp = antwoord;
-			}
-		}
-		return resp;
-	}
-
-	public List<ResultaatCursist> getAlleResultaten() {
-		return resultaten;
-
-	}
-
-	public List<ResultaatCursist> getResultatenVanOpdracht(String opdrachtID) {
-		List<ResultaatCursist> resultatenOpdracht = new ArrayList<ResultaatCursist>();
-		for (ResultaatCursist resultaat : resultaten) {
-			if (opdrachtID == resultaat.getAntwoordcursist().getOpdracht().getOpdrachtID()) {
-				resultatenOpdracht.add(resultaat);
-			}
-		}
-		return resultatenOpdracht;
-	}
-
-	public void addResultaatToCursist(ResultaatCursist resultaat) {
-		resultaten.add(resultaat);
-	}
-
-	public void removeResultaatFromCursist(String resultaatID) {
-		for (ResultaatCursist resultaat : resultaten) {
-			if (resultaatID == resultaat.getResultaatID()) {
-				resultaten.remove(resultaatID);
-			}
-
-		}
-	}
 }

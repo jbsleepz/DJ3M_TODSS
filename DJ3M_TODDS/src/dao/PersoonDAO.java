@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
-import domein.Persoon;
+import domeinBackup.Persoon;
 public class PersoonDAO {
 
 	public void create(Persoon persoon) {

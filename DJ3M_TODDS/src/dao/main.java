@@ -1,6 +1,6 @@
 package dao;
 
-import domein.Persoon;
+import domeinBackup.Persoon;
 
 public class main {
 

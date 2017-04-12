@@ -1,12 +1,23 @@
 package domein;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+@Entity
+@Table(name = "Opdracht")
 public class Opdracht {
-	private String opdrachtID;
+	private int opdrachtID;
 	private String vraag;
-	private List<Training> trainingen = new ArrayList<Training>();
+	private Set<Training> trainingen = new HashSet<Training>();
+	@Column(name = "Vraag")
 
 	public String getVraag() {
 		return vraag;
@@ -14,32 +25,21 @@ public class Opdracht {
 	public void setVraag(String vraag) {
 		this.vraag = vraag;
 	}
-	public String getOpdrachtID() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "OpdrachtID")
+	public int getOpdrachtID() {
 		return opdrachtID;
 	}
-	public void setOpdrachtID(String opdrachtID) {
+	public void setOpdrachtID(int opdrachtID) {
 		this.opdrachtID = opdrachtID;
 	}
-	public List<Training> getTrainingen(){
-		return trainingen;
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "opdrachten")
+	public Set<Training> getTrainingen() {
+		return this.trainingen;
 	}
-	public void voegAanTrainingToe(Training training){
-		trainingen.add(training);
-	}
-	public void removeTraining(String trainingID) {
-		for (Training training : trainingen) {
-			if (trainingID == training.getTrainingID()) {
-				trainingen.remove(trainingID);
-			}
-		}
-	}
-	public Training zoekTraining(String trainingID){
-		Training resp = null;
-		for (Training training : trainingen) {
-			if (trainingID == training.getTrainingID()) {
-				resp = training;
-			}
-		}
-		return resp;
+
+	public void setTrainingen(Set<Training> trainingen) {
+		this.trainingen = trainingen;
 	}
 }
