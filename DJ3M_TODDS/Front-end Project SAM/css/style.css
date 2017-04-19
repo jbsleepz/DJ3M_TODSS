@@ -46,3 +46,26 @@ div.row{
  footer{
    clear:both;
  }
+
+.container-login{
+	align:center;
+	text-align:center;
+	margin: auto;
+	width: 30%;
+	border: 3px solid #00BE9B;
+	padding: 10px;
+}
+
+.button-login{
+	font-size: 	20px;
+	width:		160px;
+	height:		50px;
+	border: 2px solid #00BE9B; /* Green */
+}
+
+.button-login:hover{
+	font-size: 	20px;
+	width:		180px;
+	height:		60px;
+	background-color: #00BE9B;
+}
