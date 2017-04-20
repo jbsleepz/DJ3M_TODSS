@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 
 
 
-@WebServlet("/loginServlet")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet{ 	
 	/**
 	 * 
@@ -34,10 +34,10 @@ public class LoginServlet extends HttpServlet{
 			System.out.println(username);
 			
 			
-			/*request.setAttribute("msg", "logged in: "+username);
+			//request.setAttribute("msg", "logged in: "+username);
 			rd = request.getRequestDispatcher("/index.html");
-			rd.forward(request, response);*/
-			
+			rd.forward(request, response);
+		
 			response.sendRedirect("/index.html");
 
 	}		
