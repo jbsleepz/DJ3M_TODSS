@@ -7,7 +7,7 @@
 <title>Index</title>
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+
 
 	<a href="Register.jsp">Register</a>
 	<br>
