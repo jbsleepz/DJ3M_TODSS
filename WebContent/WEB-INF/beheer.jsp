@@ -9,12 +9,12 @@
 	    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<script> 
 		$(function(){
-		  $("#header").load("header.html"); 
+		  $("#header").load("/header.html"); 
 
 		});
 		</script>
 	    
-	    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+	    <link href="./css/style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
