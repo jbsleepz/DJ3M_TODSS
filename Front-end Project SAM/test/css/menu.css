@@ -1,0 +1,61 @@
+@CHARSET "ISO-8859-1";
+
+ul{	
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	box-shadow: 10px 10px 5px #888888;
+
+
+
+}
+
+ul li{
+	float: 				left; 		/*toon ze van links naar rechts*/
+	width: 				200px; 		/* geef item een breedte */
+	height: 			70px; 		/* geef item een hoogte */
+	background-color: 	#e6fffa; 	/* de mooie groene kleur*/
+	opacity: 			.8;    		/* maak het doorschijnend*/
+	line-height:		70px;		/* zet de tekst in het midden vd menu*/
+	text-align: 		center;		/* plaats tekst in het midden */
+	font-size: 			20px;		/* grootte vd tekst */	
+	background-color: 	#99ffeb; 	/* de mooie groene kleur*/
+	box-shadow: 10px 10px 5px #888888;
+    border-radius: 15px;
+
+
+}
+
+/* */
+
+ul li a{
+	text-decoration: none;
+	color:			black;
+	display:		block;
+}
+
+ul li:hover{
+	background-color: white;	
+	opacity: .9;
+}
+
+ul li ul li{
+	display: none;		/* laat items niet*/
+}
+
+ul li:hover ul li{
+	display: inline-block;
+
+}
+
+.menu{
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.menu-inner{
+	display: table-cell;
+
+}
