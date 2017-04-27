@@ -13,7 +13,7 @@ public class PersoonDAO {
 		try {
 			MysqlDataSource dataSource = new MysqlDataSource();
 			dataSource.setUser("root");
-			dataSource.setPassword("5kpbgn");
+			dataSource.setPassword("joukebouwe");
 			dataSource.setURL("jdbc:mysql://localhost:3306/worlddb");
 
 			Connection conn = dataSource.getConnection();
