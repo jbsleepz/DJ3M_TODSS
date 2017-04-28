@@ -18,7 +18,7 @@ public class PersoonDAO {
 
 			Connection conn = dataSource.getConnection();
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT IN");
+			ResultSet rs = stmt.executeQuery("SELECT 5 FROM DUAL");
 			stmt.close();
 			conn.close();} catch(SQLException sqle){sqle.printStackTrace();}
 			
